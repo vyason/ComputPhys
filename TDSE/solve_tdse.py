@@ -48,35 +48,32 @@ def zeta(J,psi,dx,dt,V,hb,hb2m):
 
 
 
-# defining the system
-#-----------------------------------------------------------------------
 hb = 1                                  #Planck's constant, hbar
 m =	1                                   #mass of particle, m
 
-xmin,xmax = -10,+10                     #x-limits of simulation box
-dx = 0.01                               #grid size, dx 
+
+# defining the system for harmonic oscillator
+#-----------------------------------------------------------------------
+
+xmin,xmax,dx = -20,+20,0.01              #x-limits of simulation box
 x = np.arange(xmin,xmax+dx,dx)          #defining the position grid
 J = len(x)                              #dimension of position grid
 
+w = 0.1                                 #freq of harmonic oscillator
+V = 1/2*m*w**2*x**2                     #harmonic oscillator potential
 
-V = np.zeros(J,int)
-
-x0 = 0                                  #initial position
-p0 = 0                                  #initial momentum            
-sig = 1                                 #initial position spread
+x0,p0,sig = -10,0,1                     #initial position,momentum, position spread
 
 psi = np.exp( -((x-x0)/(2*sig))**2 + 1j*p0*(x-x0) )/np.sqrt( sig*np.sqrt(2*pi) )
 
-tmax = 100                              #simulation time limit
-dt = 0.01                               #time step, dt
-plot_steps = 10                         #time steps b/w 2 successive plots
+tmax,dt,plot_steps =  2*(2*pi/w),0.01,10        #time limit, time step, and interval b/w 2 successive plots
 
 
 
 # solving the TDSE
 #-----------------------------------------------------------------------
-hb2m = hb**2/(2*m)                                          #value of hbar^2/2m
 
+hb2m = hb**2/(2*m)                                          #value of hbar^2/2m
 lhs_lu = lhs_lumatrix(J,dx,dt,V,hb,hb2m)	                #LU decomposition for the LHS matrix
 
 t = 0
@@ -88,11 +85,7 @@ while t < tmax:
     t = t + plot_steps*dt
 
     plt.cla()
-    plt.xlim(xmin,xmax)
-    plt.ylim(0,ymax)
-    plt.xlabel(r'$x$',fontsize=14)
-    plt.ylabel(r'$|\psi|^2$',fontsize=14)
-    plt.title(f'$t$ = {t:.1f}')
-    plt.grid()
-    plt.plot(x,np.abs(psi)**2,c='red')
-    plt.pause(0.001)
+    plt.xlim(xmin,xmax);                    plt.ylim(0,ymax)
+    plt.xlabel(r'$x$',fontsize=14);         plt.ylabel(r'$|\psi|^2$',fontsize=14)
+    plt.title(f'$t$ = {t:.1f}');            plt.grid()
+    plt.plot(x,np.abs(psi)**2,c='red');      plt.pause(0.001)
