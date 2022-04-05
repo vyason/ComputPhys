@@ -2,7 +2,7 @@
 # Copyright (C) 2022  Ankit Kumar
 # Email: akvyas1995@gmail.com
 #-----------------------------------------------------------------------
-
+#
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU General Public License as published by
 #    the Free Software Foundation, either version 3 of the License, or
@@ -15,7 +15,7 @@
 #
 #    You should have received a copy of the GNU General Public License
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
-
+#
 #-----------------------------------------------------------------------
 
 
@@ -88,4 +88,4 @@ while t < tmax:
     plt.xlim(xmin,xmax);                    plt.ylim(0,ymax)
     plt.xlabel(r'$x$',fontsize=14);         plt.ylabel(r'$|\psi|^2$',fontsize=14)
     plt.title(f'$t$ = {t:.1f}');            plt.grid()
-    plt.plot(x,np.abs(psi)**2,c='red');      plt.pause(0.001)
+    plt.plot(x,np.abs(psi)**2,c='red');     plt.pause(0.001)
