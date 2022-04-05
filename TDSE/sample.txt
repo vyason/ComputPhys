@@ -1,0 +1,51 @@
+# defining the system for harmonic oscillator
+#-----------------------------------------------------------------------
+hb = 1                                  #Planck's constant, hbar
+m =	1                                   #mass of particle, m
+
+xmin,xmax = -25,+25                     #x-limits of simulation box
+dx = 0.01                               #grid size, dx 
+x = np.arange(xmin,xmax+dx,dx)          #defining the position grid
+J = len(x)                              #dimension of position grid
+
+w = 0.1
+V = 1/2*m*w**2*x**2
+
+x0 = -10                                #initial position
+p0 = 0                                  #initial momentum            
+sig = 2                                 #initial position spread
+
+psi = np.exp( -((x-x0)/(2*sig))**2 + 1j*p0*(x-x0) )/np.sqrt( sig*np.sqrt(2*pi) )
+
+tmax = 2*(2*pi/w)                       #simulation time limit
+dt = 0.01                               #time step, dt
+plot_steps = 20                         #time steps b/w 2 successive plots
+
+
+
+
+
+
+
+# defining the system for particle in a box
+#-----------------------------------------------------------------------
+hb = 1                                  #Planck's constant, hbar
+m =	1                                   #mass of particle, m
+
+xmin,xmax = -10,+10                     #x-limits of simulation box
+dx = 0.01                               #grid size, dx 
+x = np.arange(xmin,xmax+dx,dx)          #defining the position grid
+J = len(x)                              #dimension of position grid
+
+
+V = np.zeros(J,int)
+
+x0 = 0                                  #initial position
+p0 = 0                                  #initial momentum            
+sig = 1                                 #initial position spread
+
+psi = np.exp( -((x-x0)/(2*sig))**2 + 1j*p0*(x-x0) )/np.sqrt( sig*np.sqrt(2*pi) )
+
+tmax = 100                              #simulation time limit
+dt = 0.01                               #time step, dt
+plot_steps = 10                         #time steps b/w 2 successive plots
