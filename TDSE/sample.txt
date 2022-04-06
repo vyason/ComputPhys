@@ -1,7 +1,9 @@
+
+
 # defining the system for harmonic oscillator
 #-----------------------------------------------------------------------
 
-xmin,xmax,dx = -20,+20,0.01              #x-limits of simulation box
+xmin,xmax,dx = -25,+25,0.01              #x-limits of simulation box
 x = np.arange(xmin,xmax+dx,dx)          #defining the position grid
 J = len(x)                              #dimension of position grid
 
@@ -25,7 +27,7 @@ x = np.arange(xmin,xmax+dx,dx)          #defining the position grid
 J = len(x)                              #dimension of position grid
 
 V = np.zeros(J,int)                     #zero potential
-V[0],V[J-1] = np.inf,np.inf             #infinite potential at the boundaries
+V[0],V[J-1] = np.tan(pi/2),np.tan(pi/2)             #infinite potential at the boundaries
 
 x0,p0,sig = 0,0,1                       #initial position,momentum, position spread
 

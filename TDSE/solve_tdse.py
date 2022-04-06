@@ -52,21 +52,21 @@ hb = 1                                  #Planck's constant, hbar
 m =	1                                   #mass of particle, m
 
 
-# defining the system for harmonic oscillator
+# defining the system for particle in a box
 #-----------------------------------------------------------------------
 
-xmin,xmax,dx = -20,+20,0.01              #x-limits of simulation box
+xmin,xmax,dx = -10,+10,0.01             #x-limits of simulation box
 x = np.arange(xmin,xmax+dx,dx)          #defining the position grid
 J = len(x)                              #dimension of position grid
 
-w = 0.1                                 #freq of harmonic oscillator
-V = 1/2*m*w**2*x**2                     #harmonic oscillator potential
+V = np.zeros(J,float)                     #zero potential
+V[0],V[J-1] = np.tan(pi/2),np.tan(pi/2)             #infinite potential at the boundaries
 
-x0,p0,sig = -10,0,1                     #initial position,momentum, position spread
+x0,p0,sig = 0,1,1                       #initial position,momentum, position spread
 
 psi = np.exp( -((x-x0)/(2*sig))**2 + 1j*p0*(x-x0) )/np.sqrt( sig*np.sqrt(2*pi) )
 
-tmax,dt,plot_steps =  2*(2*pi/w),0.01,10        #time limit, time step, and interval b/w 2 successive plots
+tmax,dt,plot_steps = 100,0.01,10        #time limit, time step, and interval b/w 2 successive plots
 
 
 
