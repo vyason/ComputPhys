@@ -52,9 +52,9 @@ def extremum_grs(f,a,b,accy,ext_type):
 
 
 
+#examples
 if __name__ == "__main__":
 
-    #examples
     from math import pi
 
     def func(x):
