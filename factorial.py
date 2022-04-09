@@ -41,7 +41,7 @@ def calc_lfact(nmax):
     return np.exp(lfact)
 
 
-
+#example
 if __name__ == "__main__":
 
     nmax = 10
