@@ -1,4 +1,4 @@
-# python code for calculating CG coefficients using the Racah method
+# python code for calculating the stopping steps in the Collatz-conjecture
 # Copyright (C) 2022  Ankit Kumar
 # Email: akvyas1995@gmail.com
 #-----------------------------------------------------------------------
@@ -40,7 +40,7 @@ if __name__ == "__main__":
     from joblib import Parallel, delayed
 
     #minnimum and maximum n vals
-    n_min,n_max = 1e0,1e3
+    n_min,n_max = 1e0,1e4
 
     n_vals = range(int(n_min),int(n_max+1))
     

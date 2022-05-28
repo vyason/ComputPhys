@@ -37,8 +37,6 @@ def extremum_grs(f,a,b,accy,ext_type):
             else:
                 a = c
             c,d = b-(b-a)/gr,a+(b-a)/gr
-        return (b+a)/2,f((b+a)/2)
-
     elif ext_type=='max':
         while np.abs(b-a) > accy:
             if f(c) > f(d):
@@ -46,11 +44,9 @@ def extremum_grs(f,a,b,accy,ext_type):
             else:
                 a = c
             c,d = b-(b-a)/gr,a+(b-a)/gr
-        return (b+a)/2,f((b+a)/2)
-
     else:
         raise Exception('ERROR: specify extrema as min/max')
-
+    return (b+a)/2
 
 
 #examples
@@ -62,10 +58,10 @@ if __name__ == "__main__":
         return np.sin(x)
 
     #sinx has a maxima at pi/2
-    x0,f0 = extremum_grs(func,0,pi,1e-5,ext_type='max')
-    print(x0/pi,f0)
+    x0 = extremum_grs(func,0,pi,1e-5,ext_type='max')
+    print(x0/pi)
 
     #sinx has a minima at 3*pi/2
-    x0,f0 = extremum_grs(func,pi,2*pi,1e-5,ext_type='min')
-    print(x0/pi,f0)
+    x0 = extremum_grs(func,pi,2*pi,1e-5,ext_type='min')
+    print(x0/pi)
 
